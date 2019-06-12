@@ -2,22 +2,26 @@ import React from "react";
 
 const AddFriend = props => {
     return(
-        <form onSubmit={props.addFriend}>
+        <div>
+        <h1>Add A Friend!</h1>
+        <form>
             <input placeholder="name"
-            value={this.state.name}
+            value={props.name}
             name="name"
             onChange={props.handleChanges} />
 
             <input placeholder="age"
-            value={this.state.age}
+            value={props.age}
             name="age"
             onChange={props.handleChanges} />
 
             <input placeholder="email"
-            value={this.state.email}
+            value={props.email}
             name="email"
             onChange={props.handleChanges} />
         </form>
+        <button onClick={props.addFriend}>Add</button>
+    </div>
     );
 }
 

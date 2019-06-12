@@ -7,13 +7,13 @@ class FriendContainer extends React.Component {
     constructor(){
         super();
         this.state = {
-            friends:[]
+            friends:[],
         }
     }
 
     componentDidMount(){
         axios.get("http://localhost:5000/friends")
-        .then((response) =>{
+        .then((response) => {
             this.setState({
                 friends: response.data
             })
@@ -23,29 +23,41 @@ class FriendContainer extends React.Component {
         })
     }
 
-    addFriend = event => {
-        event.preventDefault();
-    
-    const newFriend = {
-      name: this.state.name,
-      age: this.state.age,
-      email: this.state.email
-        };
-    }
-
     handleChanges = event => {
         this.setState({
           [event.target.name]: event.target.value
         });
       };
 
+    addFriend(){
+        const newFriend = {
+            name: this.state.name,
+            age: "",
+            email: ""
+        };
+
+        console.log(newFriend)
+
+        axios.post("http://localhost5000/friends", newFriend)
+        .then((response) => {    
+        this.setState({
+                friends: response.data
+            })
+        })
+        .catch((error) => {
+                alert("New friend not found")
+        })
+    }
+
     render() {
         return(
             <div className="friend-container">
                 <Friends friends={this.state.friends} />
-                <AddFriend addFriend={this.addFriend} handleChanges={this.handleChanges} />
+                <AddFriend addFriend={this.addFriend}
+                handleChanges={this.handleChanges} />
             </div>
         )
+}
 }
 
 export default FriendContainer;

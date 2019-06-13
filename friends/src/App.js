@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from "axios";
 import FriendForm from "./components/FriendForm";
-import Friends from "./components/Friends";
+import FriendList from "./components/FriendList";
 import { Route, NavLink} from "react-router-dom";
-import UpdateFriendForm from "./components/UpdateFriendForm";
+// import UpdateFriendForm from "./components/UpdateFriendForm";
 
 import './App.css';
 
@@ -74,19 +74,18 @@ render() {
           
           <Route exact path="/" 
           render={props => (
-          <Friends
+          <FriendList
             {...props}
-            friends={this.state.friends}
-            setUpdateForm={this.setUpdateForm} />)}
+            friends={this.state.friends} />)}
           />
       
-          <Route exact path="/update-friend"
-          redner={props => (
+          {/* <Route exact path="/update-friend"
+          render={props => (
           <UpdateFriendForm
             {...props}
             updateFriend={this.updateFriend}
             activeFriend={this.state.activeFriend} />)}
-          />
+          /> */}
 
       </div>
     )
